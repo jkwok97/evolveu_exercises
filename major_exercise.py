@@ -1,7 +1,21 @@
 
 import sys
-from openpyxl import load_workbook
+import openpyxl
 from datetime import datetime
+
+
+wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
+sheets = wb['Clients']
+
+names = []
+issues = []
+for c in sheets.rows:
+	names.append(c[0].value)
+	issues.append(c[5].value)
+del names[0]
+for count, name in enumerate (names,1):
+	print (name.split()[0], name.split()[1], issues[count])
+	print (name)
 
 def find_tab(wb, date_s):
 	for sheet in wb:
@@ -26,6 +40,21 @@ def lookup(dictionary, key_value):
 	return False
 
 class Clients:
+	
+	client_list = {}
+
+	wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
+	sheets = wb['Clients']
+
+	names = []
+	issues = []
+	for c in sheets.rows:
+		names.append(c[0].value)
+		issues.append(c[5].value)
+	del names[0]
+	for count, name in enumerate (names,1):
+	print (name.split()[0], name.split()[1], issues[count])
+	print (name)
 
 	client_list = {}
 
@@ -33,15 +62,16 @@ class Clients:
 		self.first = first
 		self.last = last
 
-	@property
 	def name(self):
 		return '{} {}'.format(self.first, self.last)
 
-	def __iters__(self):
-		iters = dict((x,y) for x,y in client_list.__dict__.items())
-		iters.update(self.__dict)
-		for x,y in iters.items():
-			yield x,y
 
-client_list = client_list()
-print(dict(a))
+
+#	def __iters__(self):
+#		iters = dict((x,y) for x,y in Clients.__dict__.items())
+#		iters.update(self.__dict)
+#		for x,y in iters.items():
+#			yield x,y
+
+#client_1 = Clients()
+#print(dict(client_1))

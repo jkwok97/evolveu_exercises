@@ -4,7 +4,7 @@
 #This program will display clients name and issues from cSpace Booking worksheet
 #
 import openpyxl
-wb = openpyxl.load_workbook('cSpace_Booking.xlsx')
+wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
 sheets = wb['Clients']
 
 names = []
