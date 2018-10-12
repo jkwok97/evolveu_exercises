@@ -12,4 +12,3 @@ class Person:
 
 	def birthday(self):
 		self.age += 1
-  

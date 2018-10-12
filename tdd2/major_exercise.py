@@ -11,12 +11,11 @@ sheets = wb['Clients']
 names = []
 issues = []
 for c in sheets.rows:
-	names.append(c[0].value)
+	names.append(c[0].value)#
 	issues.append(c[5].value)
 del names[0]
 for count, name in enumerate (names,1):
 	print (name.split()[0], name.split()[1], issues[count])
-	print (name)
 
 # exercise 2
 
@@ -54,22 +53,7 @@ class Clients:
 # set rate for each type of space
 # add rate for each client 
 
-	client_list = {}
-
-	wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
-	sheets = wb['Clients']
-
-	names = []
-	issues = []
-	for c in sheets.rows:
-		names.append(c[0].value)
-		issues.append(c[5].value)
-	del names[0]
-	for count, name in enumerate (names,1):
-	print (name.split()[0], name.split()[1], issues[count])
-	print (name)
-
-	client_list = {}
+#	client_list = {}
 
 	def __init__ (self, first, last):
 		self.first = first
@@ -77,6 +61,9 @@ class Clients:
 
 	def name(self):
 		return '{} {}'.format(self.first, self.last)
+
+#client_1 = Clients.name
+#print (client_1)
 
 
 
