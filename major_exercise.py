@@ -3,6 +3,7 @@ import sys
 import openpyxl
 from datetime import datetime
 
+# Exercise 1
 
 wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
 sheets = wb['Clients']
@@ -16,6 +17,8 @@ del names[0]
 for count, name in enumerate (names,1):
 	print (name.split()[0], name.split()[1], issues[count])
 	print (name)
+
+# exercise 2
 
 def find_tab(wb, date_s):
 	for sheet in wb:
@@ -39,8 +42,18 @@ def lookup(dictionary, key_value):
 		return True
 	return False
 
+# exercise 3
+
 class Clients:
-	
+
+# create an instance of the class Client from the excel worksheet Client
+# take that instance and put inside a dictionary
+# get all data from a month tab
+# get all data from facilities tab
+# get all data from rates tab
+# set rate for each type of space
+# add rate for each client 
+
 	client_list = {}
 
 	wb = openpyxl.load_workbook('cSpace_Bookingv1.xlsx')
