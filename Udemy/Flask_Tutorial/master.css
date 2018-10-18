@@ -1,0 +1,20 @@
+/*
+
+body {
+    background: url(https://cdn-images-1.medium.com/max/1600/1*WgROsTKa6diRYTG5K0R5mw.jpeg);
+    background-repeat: no-repeat;
+}
+
+*/
+
+h1 {
+    font-family: 'Pacifico', cursive;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
