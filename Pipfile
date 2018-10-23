@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 openpyxl = "*"
 pytest = "*"
+requestes = "*"
+requests = "*"
+colorama = "*"
 
 [dev-packages]
 
