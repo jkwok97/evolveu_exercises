@@ -9,6 +9,8 @@ pytest = "*"
 requestes = "*"
 requests = "*"
 colorama = "*"
+flask = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 
