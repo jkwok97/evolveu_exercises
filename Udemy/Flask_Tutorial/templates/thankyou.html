@@ -1,10 +1,9 @@
 
-{% extends "base.html" %}
-
-{% block content %}
-
-<div class="jumbotron">
-    <h1>Thanks for signing up! {{ first|capitalize }} {{ last|capitalize }}</h1>
-</div>
-
-{% endblock %}
+<h1>Thank you. Here is the info you gave us:</h1>
+<ul>
+    <li>Breed: {{ session[ 'breed' ]}}</li>
+    <li>Neutered: {{ session[ 'neutered' ]}}</li>
+    <li>Mood: {{ session[ 'mood' ]}}</li>
+    <li>Food Choice: {{ session[ 'food' ]}}</li>
+    <li>Feedback: {{ session[ 'feedback' ]}}</li>
+</ul>
