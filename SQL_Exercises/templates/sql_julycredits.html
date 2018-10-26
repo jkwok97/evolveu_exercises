@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL exercise</title>
+</head>
+<body>
+    <h1>Hello!</h1>
+    <p>All clients and credits for July are listed below</p>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Month</th>
+            <th scope="col">Credits</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for clients in clients %}
+        <tr>
+            <td>{{ clients.name }} </td>
+            <td>{{ clients.month }} </td>
+            <td>{{ clients.credits }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">All Clients</a><br>
+</body>
+</html>
