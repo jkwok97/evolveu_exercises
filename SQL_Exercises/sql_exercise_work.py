@@ -18,7 +18,7 @@ class Client():
             client_objects.append(Client(clients))
         return client_objects
 
-class Client_july_cred():
+class Client_cred():
 
     def __init__ (self, list):
         self.name, self.month, self.credits = list
@@ -29,35 +29,25 @@ class Client_july_cred():
         julycredits_objects = []
 
         for clients in client_list:
-            julycredits_objects.append(Client_july_cred(clients))
-        return julycredits_objects    
-
-class Client_no_cred():
-
-    def __init__ (self, list):
-        self.name, self.credits = list
+            julycredits_objects.append(Client_cred(clients))
+        return julycredits_objects 
 
     def get_no_credits():
-        cur.execute("select name, credits from clients full join credits on clients.client_id = credits.client_id where credits is null")
+        cur.execute("select name, month, credits from clients full join credits on clients.client_id = credits.client_id where credits is null")
         client_list = cur.fetchall()
         no_credits_objects = []
 
         for clients in client_list:
-            no_credits_objects.append(Client_no_cred(clients))
+            no_credits_objects.append(Client_cred(clients))
         return no_credits_objects
 
-class Client_no_client():
-
-    def __init__ (self, list):
-        self.name, self.credits = list
-
     def get_no_clients():
-        cur.execute("select name, credits from clients full join credits on clients.client_id = credits.client_id where name is null")
+        cur.execute("select name, month, credits from clients full join credits on clients.client_id = credits.client_id where name is null")
         client_list = cur.fetchall()
         no_clients_objects = []
 
         for clients in client_list:
-            no_clients_objects.append(Client_no_client(clients))
+            no_clients_objects.append(Client_cred(clients))
         return no_clients_objects
 
 # conn.close()
