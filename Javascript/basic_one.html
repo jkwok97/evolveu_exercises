@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>console.log("hello world from inline javascript");</script>
+    <script src='basic_one.js'></script>
+    <link rel="stylesheet" href="basic_one.css">
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <button>Push Me</button>
+    <button onclick="this.innerHTML = Date()">The time is?</button>
+    <button onclick = "myfunction();">Push Me Second</button>
+    <button onmouseover="myfunction2();">Mouse Over</button>
+    <button onmouseover="myfunction3();">Mouse Over This!</button>
+    <br><br><div height="300" id='mydiv' onmouseover="wipe();">
+        This is my new div!
+    </div>
+    <br><br><div height="200">
+    <svg width="1800" height="200">
+        <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
+        <polygon points="100,10 40,198 190,78 10,78 160,198"style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+        <circle id = 'circle' onmouseover="move_circle();" cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>
+    </div>
+    
+    <div>
+        <svg width="1800" height="500">
+            <circle id = 'circle2' cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+        </svg>   
+        <!-- <p>Your current x coordinate is: </p>
+        <p>Your current y coordinate is: </p> -->
+        <form name = 'circle_move2'>
+            Move Circle In X Coordinate: <input type="text" name="textx"><br>
+            Move Circle In Y Coordinate: <input type="text" name="texty"><br><br>
+            <input type="button" value="Move The Circle" onclick="circle_move();"><br><br>
+        </form>
+    </div>
+    <div>
+            <!-- width="1800" height="500" -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 500" onload="makeDraggable(evt)">
+            <circle class="draggable" id='circle3' cx="50" cy="50" r="40" stroke="black" stroke-width="4" fill="red" />
+        </svg> 
+    </div>
+    <div>
+        <form name = 'calculator'>
+            Input 1: <input type="text" name="textnum1"><br>
+            Input 2: <input type="text" name="textnum2"><br><br>
+            <input type="button" value="Calculate" onclick="sumValues();"><br><br>
+            Result: <input type="text" name="textres">
+        </form>
+    </div>
+    
+</body>
+</html>

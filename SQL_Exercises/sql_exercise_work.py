@@ -1,5 +1,6 @@
 
 import psycopg2
+from flask import request,jsonify
 
 conn = psycopg2.connect('dbname=postgres')
 cur = conn.cursor()
@@ -7,16 +8,31 @@ cur = conn.cursor()
 class Client():
 
     def __init__ (self, list):
-        self.id, self.name, self.email, self.city, self.birthyear = list
+        self.client_id, self.name, self.email, self.city, self.birthyear = list
 
     def get_name():
-        cur.execute('Select * from clients')
+        cur.execute('select * from clients')
         client_list = cur.fetchall()
         client_objects = []
 
         for clients in client_list:
             client_objects.append(Client(clients))
         return client_objects
+
+def client_data(client_id2): 
+    conn = psycopg2.connect('dbname=postgres')
+    cur = conn.cursor()
+    query = "select * from clients where client_id=(%s)"
+
+    cur.execute(query, (client_id2,))
+    client_result = cur.fetchone()
+    
+    conn.close()
+    print (jsonify(client_result))
+    client_result = {'id': client_result[0], 'name': client_result[1], 'email': client_result[2], 'city': client_result[3], 'birth year': client_result[4]}
+
+    return (client_result) 
+       
 
 class Client_cred():
 
