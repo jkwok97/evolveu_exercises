@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src='draggable.js'></script> -->
+    <link rel="stylesheet" href="basic_one.css">
+</head>
+<body>
+    <div>
+            <!-- width="1800" height="500" -->
+        <section class="block-html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1000" onload="makeDraggable(evt)">
+            <script type="text/javascript">
+                function makeDraggable(evt) {
+                    var svg = evt.target;
+                    svg.addEventListener('mousedown', startDrag);
+                    svg.addEventListener('mousemove', drag);
+                    svg.addEventListener('mouseup', endDrag);
+                    svg.addEventListener('mouseleave', endDrag);
+                
+                    function getMousePosition(evt) {
+                      var CTM = svg.getScreenCTM();
+                      return {
+                        x: (evt.clientX - CTM.e) / CTM.a,
+                        y: (evt.clientY - CTM.f) / CTM.d
+                      };
+                    }
+                
+                    var selectedElement, offset;
+                
+                    function startDrag(evt) {
+                      if (evt.target.classList.contains('draggable')) {
+                        selectedElement = evt.target;
+                        offset = getMousePosition(evt);
+                        offset.x -= parseFloat(selectedElement.getAttributeNS(null, "x"));
+                        offset.y -= parseFloat(selectedElement.getAttributeNS(null, "y"));
+                      }
+                    }
+                
+                    function drag(evt) {
+                      if (selectedElement) {
+                        evt.preventDefault();
+                        var coord = getMousePosition(evt);
+                        selectedElement.setAttributeNS(null, "x", coord.x - offset.x);
+                        selectedElement.setAttributeNS(null, "y", coord.y - offset.y);
+                      }
+                    }
+                
+                    function endDrag(evt) {
+                      selectedElement = null;
+                    }
+                  }
+            </script>
+            <circle class="draggable" cx="50" cy="50" r="40" stroke="black" stroke-width="4" fill="red" />
+        </svg> 
+    </section>
+    </div>
+</body>
+</html>
