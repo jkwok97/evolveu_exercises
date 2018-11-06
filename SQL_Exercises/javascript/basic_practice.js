@@ -44,21 +44,21 @@ var playModule = function() {
 
     function myArray() {
         for (var i = 0; i < myArray.length; i++)
-        console.log(myArray[i]);
+           document.getElementById("left-array").innerHTML += "<tr><td>" + myArray[i] + "</td></tr>";
     }
     
-    function myObject() {
-        Object.keys(myObject).forEach(function(key) {
-        console.log(key, myObject[key]);
-            });
-    }
+    // function myObject() {
+    //     Object.keys(myObject).forEach(function(key) {
+    //     console.log(key, myObject[key]);
+    //         });
+    // }
 
     // ALTERNATE LOOP FOR MYOBJECT
-    // function myObject() {
-    //     for (i in myObject) {
-    //         console.log(i, myObject[i]);
-    //     }
-    // }
+    function myObject() {
+        for (i in myObject) {
+            document.getElementById("right-object").innerHTML += "<tr><td>" + (i, myObject[i]) + "</td></tr>";
+        }
+    }
 
     function screenPrint() {
         console.log("this is Json");
