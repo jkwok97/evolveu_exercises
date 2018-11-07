@@ -10,6 +10,10 @@ def index():
     client_list = sql_exercise_work.Client.get_name()
     return render_template('sql_index.html', clients = client_list)
 
+@app.route('/practice')
+def practice():
+    return render_template('basic_practice.html')
+
 @app.route('/data/<client_id2>')
 def data(client_id2):
     client_result = sql_exercise_work.client_data(client_id2)

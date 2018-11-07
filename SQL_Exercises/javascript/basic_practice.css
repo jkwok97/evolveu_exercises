@@ -39,11 +39,15 @@
 .move-button,
 .json-button,
 .array-button,
-.object-button {
+.object-button,
+.div-builder-button,
+.request-button {
     height: 20px;
-    width: 10%;
+    width: 15%;
     background-color: black;
     color: white;
     border: 2px solid grey;
     margin-top: 5px;
+    margin-bottom: 5px;
+    
 }
