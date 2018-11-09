@@ -29,7 +29,7 @@ var playModule = function() {
     document.getElementById("array").onclick = myArray;
     document.getElementById("object").onclick = myObject;
     document.getElementById("move").onclick = convertString;
-    document.getElementById("div-builder").onclick = createDiv;
+    document.getElementById("request").onclick = createDiv;
     document.getElementById("boxes").addEventListener('click', removeElement);
     document.getElementById("request").onclick = dbGetInfo;
 
@@ -46,20 +46,35 @@ var playModule = function() {
     }
 
     function dbGetInfo() {
-        console.log("in function");
+        // console.log("in function");
+        const getClient = parseInt(prompt('Which client would you like to get?'));
+
+        async function dbGetInfo(client) {
+            try {
+                const result = await fetch(`http://127.0.0.1:5000/data/${client}`);
+                const data = await result.json();
+                console.log(data);
+                document.getElementById("moved-text").innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City:${data.city}<br>Year of Birth: ${data.birth_year}`;
+                createDiv(data);
+            } catch (error) {
+                alert(error);
+            }
+        }
+        dbGetInfo(getClient);
     }
 
-    function createDiv() {     
+    function createDiv(data) {     
             div = document.createElement("div");
-            div.style.width = "150px";
+            div.style.width = "250px";
             div.style.height = "150px";
-            div.innerHTML = counting;
+            div.innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City:${data.city}<br>Year of Birth: ${data.birth_year}`;
             div.style.border = "2px solid black";
             div.style.textAlign = "center";
             div.style.float = "left";
             div.style.marginLeft = "3px";
             div.style.marginTop = "3px";
             div.id = "div-" + counting;
+            div.style.backgroundColor = "lightyellow"
             document.getElementById("boxes").appendChild(div);
         counting++
     }
@@ -118,6 +133,7 @@ var playModule = function() {
         convertString();
         showValue();
     }
+
 }();
 
 // {"type":"Fiat", "model":"500", "color":"white"}
