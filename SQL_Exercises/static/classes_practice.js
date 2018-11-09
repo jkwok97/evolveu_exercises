@@ -5,10 +5,15 @@
             this.name = name;
             this.age = age;
             this.bankAccount = bankAccount;
+            this.counter = 0;
         }
 
         happyBirthday() {
-            this.age++;
+            this.counter++
+            if (this.counter === 12) {
+                this.age++
+                this.counter = 0;
+            }
         }
 
         gettingPaid() {};
@@ -19,14 +24,14 @@
         constructor (name, age, bankAccount, payAmount) {
             super(name, age, bankAccount);
             this.payAmount = payAmount;
-            this.counter = 0
+            this.counter1 = 0
         }
 
         gettingPaid() {
-            this.counter++
-            if (this.counter === 12) {
+            this.counter1++
+            if (this.counter1 === 12) {
                 this.bankAccount += this.payAmount;
-                this.counter = 0;
+                this.counter1 = 0;
             }  
         }
     }
@@ -57,8 +62,8 @@
     }
     
     const jeff = new FullStack('Jeff', 39, 0, 5000);
-    const frank = new FullStack('Frank', 50, 0, 5000);
-    const joe = new Farmer('Joe', 41, 0, 100000);
+    const frank = new FullStack('Frank', 25, 0, 5000);
+    const joe = new Farmer('Joe', 50, 0, 100000);
     const lee = new Clerk('Lee', 19, 0);
 
     // personArray = [jeff, frank, joe, lee];
@@ -72,8 +77,12 @@
     function fullMonth(event){
         for (var i = 0; i < personArray.length; i++) {
             personArray[i].gettingPaid();
+            personArray[i].happyBirthday();
             console.log(personArray[i]);
-            document.getElementById("top").innerHTML += `${personArray[0].name}<br> ${personArray[0].age}<br>`;
+            document.getElementById("top-div").innerHTML = `Name: ${personArray[0].name}<br>Age: ${personArray[0].age}<br>Bank Account: ${personArray[0].bankAccount}`;
+            document.getElementById("bottom-div").innerHTML = `Name: ${personArray[1].name}<br>Age: ${personArray[1].age}<br>Bank Account: ${personArray[1].bankAccount}`;
+            document.getElementById("right-div").innerHTML = `Name: ${personArray[2].name}<br>Age: ${personArray[2].age}<br>Bank Account: ${personArray[2].bankAccount}`;
+            document.getElementById("left-div").innerHTML = `Name: ${personArray[3].name}<br>Age: ${personArray[3].age}<br>Bank Account: ${personArray[3].bankAccount}`;
         }
     }
 

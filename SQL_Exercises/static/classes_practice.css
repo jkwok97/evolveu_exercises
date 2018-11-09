@@ -44,5 +44,11 @@
     border: 2px solid grey;
     margin-top: 5px;
     margin-bottom: 5px;
-    
+}
+
+#top-div,
+#left-div,
+#right-div,
+#bottom-div {
+    text-align: center;
 }
