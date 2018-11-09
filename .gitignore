@@ -111,4 +111,4 @@ venv.bak/
 dmypy.json
 
 # React
-/node_modules
+node_modules/
