@@ -54,7 +54,7 @@ var playModule = function() {
                 const result = await fetch(`http://127.0.0.1:5000/data/${client}`);
                 const data = await result.json();
                 console.log(data);
-                document.getElementById("moved-text").innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City:${data.city}<br>Year of Birth: ${data.birth_year}`;
+                document.getElementById("moved-text").innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City:${data.city}<br>Year of Birth: ${(data["birth year"])}`;
                 createDiv(data);
             } catch (error) {
                 alert(error);
@@ -67,7 +67,7 @@ var playModule = function() {
             div = document.createElement("div");
             div.style.width = "250px";
             div.style.height = "150px";
-            div.innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City:${data.city}<br>Year of Birth: ${data.birth_year}`;
+            div.innerHTML = `Client id: ${data.id}<br>Name: ${data.name}<br>Email: ${data.email}<br>City: ${data.city}<br>Year of Birth: ${(data["birth year"])}`;
             div.style.border = "2px solid black";
             div.style.textAlign = "center";
             div.style.float = "left";
