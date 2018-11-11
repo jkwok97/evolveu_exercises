@@ -10,6 +10,8 @@ module.exports = {
     devServer: {
         contentBase: './dist'
     },
+    devtool: 'eval-source-map',
+    mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
