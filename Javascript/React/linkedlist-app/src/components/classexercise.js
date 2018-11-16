@@ -17,4 +17,4 @@ function getMyLL() {
     return head;
 }
 
-export default { getMyLL };
+export default { getMyLL, Node };
