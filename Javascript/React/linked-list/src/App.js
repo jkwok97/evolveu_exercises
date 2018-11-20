@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Linked List</h1>
-        <LinkedListComp/>
+        <LinkedListComp name="Top" func={this.onPassedFunction} />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>

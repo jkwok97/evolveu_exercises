@@ -5,12 +5,14 @@ class Node {
         this.subject = subject;
         this.amount = amount;
         this.forwardNode = null;
+        this.prevNode = null;
     }
 }
 
 class LinkedList {
     constructor(subject, amount) {
-        this.x = new Node(subject, amount, null);
+        this.x = new Node(subject, amount, null, null);
+        this.current = this.x;
     }
 
     add(subject, amount) {
@@ -19,10 +21,11 @@ class LinkedList {
             y = y.forwardNode
         }
         y.forwardNode = new Node(subject, amount);
+        y.forwardNode.prevNode = y;
         return (y);
     } 
 
-    show(value) {
+    show() {
         let y = this.x;
         let z = `${y.subject} ${y.amount}`;
         while (y.forwardNode) {
@@ -30,7 +33,63 @@ class LinkedList {
             y = y.forwardNode;
         }
         return (z);
-    } 
+    }
+    
+    getFirst() {
+        let y = this.x;
+        let z = `${y.subject} ${y.amount}`;
+        return (z);
+    }
+
+    getNext() {
+        if (this.current.forwardNode) {
+            this.current = this.current.forwardNode;
+            let y = `${this.current.subject} ${this.current.amount}`;
+            return (y);
+        } else {
+            return (`${this.current.subject} ${this.current.amount}: is the last node`);
+        }
+          
+    }
+
+    getPrev() {
+        if (this.current.prevNode) {
+            this.current = this.current.prevNode;
+            let y = `${this.current.subject} ${this.current.amount}`;
+            return (y);
+        } else {
+            return (`${this.current.subject} ${this.current.amount}: is the last node`);
+        }
+    }
+
+    getLast() {
+        while (this.current.forwardNode) {
+            this.current = this.current.forwardNode;
+        }
+        let y = `${this.current.subject} ${this.current.amount}`;
+            return (y);
+    }
+
+    insertNode(subject, amount) {
+        let x = this.current.forwardNode;
+        let y = new Node (subject, amount);
+        let z = this.current.prevNode;
+        this.current.forwardNode = y;
+        y.forwardNode = x;
+        y.prevNode = z;
+        console.log(this.show());
+        y = `${this.current.forwardNode.subject} ${this.current.forwardNode.amount}`
+        return (y);
+    }
+
+    deleteNode() {
+        let x = this.current.forwardNode;
+        console.log(x);
+        let y = this.current.prevNode;
+        console.log(y);
+        // x = this.current.forwardNode.forwardNode;
+        // y = this.current.prevNode.prevNode;
+    }
 }
 
 export default { LinkedList };
