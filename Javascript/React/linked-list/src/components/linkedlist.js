@@ -1,4 +1,4 @@
-import LinkedListComp from "./LinkedListComp";
+// import LinkedListComp from "./LinkedListComp";
 
 class Node {
     constructor(subject, amount) {
@@ -37,6 +37,7 @@ class LinkedList {
     
     getFirst() {
         let y = this.x;
+        this.current = y;
         let z = `${y.subject} ${y.amount}`;
         return (z);
     }
@@ -71,24 +72,22 @@ class LinkedList {
     }
 
     insertNode(subject, amount) {
-        let x = this.current.forwardNode;
-        let y = new Node (subject, amount);
-        let z = this.current.prevNode;
-        this.current.forwardNode = y;
-        y.forwardNode = x;
-        y.prevNode = z;
-        console.log(this.show());
-        y = `${this.current.forwardNode.subject} ${this.current.forwardNode.amount}`
-        return (y);
+        let temp_forwardNode = this.current.forwardNode;
+        let newNode = new Node (subject, amount);
+        this.current.forwardNode = newNode;
+        newNode.prevNode = this.current;
+        this.current = newNode;
+        newNode.forwardNode = temp_forwardNode;
+        temp_forwardNode.prevNode = newNode;
+        newNode = `${this.current.subject} ${this.current.amount}`
+        return (newNode);
     }
 
     deleteNode() {
-        let x = this.current.forwardNode;
-        console.log(x);
-        let y = this.current.prevNode;
-        console.log(y);
-        // x = this.current.forwardNode.forwardNode;
-        // y = this.current.prevNode.prevNode;
+        let temp_forwardNode = this.current.forwardNode;
+        this.current = this.current.prevNode;
+        this.current.forwardNode = temp_forwardNode;
+        temp_forwardNode.prevNode = this.current;
     }
 }
 

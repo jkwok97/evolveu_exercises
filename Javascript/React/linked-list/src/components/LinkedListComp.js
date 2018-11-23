@@ -53,6 +53,10 @@ class LinkedListComp extends Component {
         document.getElementById("all").innerHTML = `${this.state.newNode.insertNode(subject, amount)}`;
     }
 
+    deleteNode = () => {
+        this.state.newNode.deleteNode();
+    }
+
     onPassedFunction = () => {
         console.log('we are in the app function');
     }
