@@ -64,7 +64,7 @@ class LinkedListComp extends Component {
     render() {
         return (
             <div className="linklist">
-                <h2>Hello World!!!!!</h2>
+                <h2>Linked Lists!</h2>
                 <div className="addlinklist">
                     <button id="new-linklist" onClick={this.newLinkList}>New Linked List</button>
                     <button id="add-node" onClick={this.addNode}>Add Node</button>

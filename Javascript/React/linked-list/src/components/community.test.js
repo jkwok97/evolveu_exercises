@@ -2,7 +2,7 @@ import ct from "./community"
 
 test ('Hello World', () => {
 
-    let p = new ct.People('Janson', 2, 500);
+    let p = new ct.Community ('Janson', 2, 500);
     expect(p.show()).toBe(`Janson, 2, 500`);
 
     p.birthday();
@@ -13,26 +13,24 @@ test ('Hello World', () => {
     expect(bff.show()).toBe('Janson, 4, 500');
     expect(p.show()).toBe('Janson, 4, 500');
 
-    let newPerson1 = new ct.People('Joe', 25, 775);
-    let newPerson2 = new ct.People('Frank', 35, 1000);
-    let newPerson3 = new ct.People('Tim', 29, 250);
+    let community = new ct.Community
 
-    expect(newPerson1.addPerson('Joe', 25, 775)).toEqual([{"age": 25, "dollars": 775, "name": "Joe"}]);
-    expect(newPerson2.addPerson('Frank', 35, 1000)).toEqual({"age": 35, "dollars": 1000, "name": "Frank"});
-    expect(newPerson3.addPerson('Tim', 29, 250)).toEqual({"age": 29, "dollars": 250, "name": "Tim"});
+    expect(newPerson.addPerson('Joe', 25, 775)).toEqual({"age": 25, "dollars": 775, "name": "Joe"});
+    expect(newPerson.addPerson('Frank', 35, 1000)).toEqual({"age": 35, "dollars": 1000, "name": "Frank"});
+    expect(newPerson.addPerson('Tim', 29, 250)).toEqual({"age": 29, "dollars": 250, "name": "Tim"});
 
-    let sum = [newPerson1.age, newPerson2.age, newPerson3.age].reduce((a, b) => a + b, 0);
-    console.log(sum);
+    expect(newPerson.showArray()).toEqual("Name: Joe, Age: 25, Dollars: 775 | Name: Frank, Age: 35, Dollars: 1000 | Name: Tim, Age: 29, Dollars: 250 | ");
 
-    newPerson1.birthday();
-    expect(newPerson1.show()).toBe('Joe, 26, 775');
-    newPerson2.birthday();
-    expect(newPerson2.show()).toBe('Frank, 36, 1000');
-    newPerson3.birthday();
-    expect(newPerson3.show()).toBe('Tim, 30, 250');
+    expect(newPerson.sumAge()).toBe(89);
 
-    let sum2 = [newPerson1.age, newPerson2.age, newPerson3.age].reduce((a, b) => a + b, 0);
-    console.log(sum2);
+    console.log(newPerson.peopleArray[0].age);
+    newPerson.birthday();
+    console.log(newPerson.newPerson);
+
+    expect(newPerson.addPerson('Jeff', 39, 1500)).toEqual({"age": 39, "dollars": 1500, "name": "Jeff"});
+    expect(newPerson.addPerson('Larry', 45, 2500)).toEqual({"age": 45, "dollars": 2500, "name": "Larry"});
+
+    
 
 
 
