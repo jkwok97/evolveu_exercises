@@ -17,10 +17,12 @@ class App extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => this.setState({ robots: users }));
+    console.log(this.state.robots);
   }
 
   onSearchChange = (event) => {
     this.setState({ searchfield: event.target.value });
+    console.log(this.state.searchfield);
   }
 
   render() {
