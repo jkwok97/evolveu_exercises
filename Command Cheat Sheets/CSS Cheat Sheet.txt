@@ -1,0 +1,32 @@
+CSS Cheat Sheet
+
+*** CSS GRIDS ***
+* wrap divs in a container *
+
+Ex. See Udemy/web_developer/css_grids
+
+.container {
+	display: grid;			=>	will make display a grid property
+	grid-gap: 20px;			=>	will put 20px gap up and down
+	grid-template-columns: 1fr	=>	all items even along row
+	grid-template-columns: 1fr 2fr	=>	will make 2nd item twice as long as first
+	grid-template-columns: repeat(3, 1fr)	=>	1st 3 items will be 1fr
+	grid-template-columns: auto	=>	will scale as per items
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) 
+	=>	this makes things responsive, items min 200px and max 1fr	
+	grid-template-rows: 1fr		=> 	all commands same as columns but for rows
+	justify-items: stretch		=>	default (will take up all space) horz.
+	justify-items: start		=>	aligns items start of grid system horz.
+	justify-items: end		=>	aligns items end of grid system horz.
+	align-items: stretch		=>	default (will take up all space) vert.
+	align-items: start		=>	aligns items start of grid system vert.
+	align-items: end		=>	aligns items end of grid system vert.
+}
+
+.green {
+	grid-column: 1/4		=> will start at 1 and end at 4, short form
+	grid-column-start: 1		=> will start at column 1
+	grid column-end: 4		=> will end at column 4
+	grid-column: 1/-1		=> will start at 1 and end at the end of columns
+	grid-column: span 2		=> will span across 2 columns always
+}

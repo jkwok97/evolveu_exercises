@@ -1,0 +1,75 @@
+***** DEPLOYING TO HEROKU *****
+
+** Project must be on GitHub! **
+** Make sure back end and front end are separate repositories **
+
+* INSTALLING THE HEROKU CLI GLOBAL *
+
+brew install heroku/brew/heroku		=> 	installs Heroku command line interface
+
+* DEPLOYING APP ON HEROKU *
+
+* before running any of these commands be sure to be in your root/project folder
+
+heroku create				=> 	creates a heroku remote to your github repo
+git remote -v				=>	displays all your heroku git repos
+
+******* in case (git remote -v) displays wrong Heroku remote run this ****************************
+
+heroku git:remote -a (place new app created here)	=>	this will rename your app
+re-run git remote -v to make sure Heroku app matches the created app
+
+**************************************************************************************************
+
+git push heroku master			=>	deploys app to heroku (will create a build env)
+heroku open				=>	this will open the app on browser
+heroku logs --tail			=>	give us a log of what's going on in heroku server
+
+* if you change any files  run the commands below to re-deploy *
+git add .				=>	adds files to the commit
+git remote -m "description of commit"	=>	adds description to the files being commited
+git push heroku master			=>	pushes to heroku master branch on GitHub
+
+******** DEPLOYING A POSTGRES DATABASE ATTACHED TO THIS APP *****************
+
+* on your heroku browser click top right hamburger => data
+* click create one under Heroku Postgres
+* click install Heroku Postgres
+* select which app to connect to
+
+** ON BASH COMMAND LINE
+
+heroku addons				=>	displays if the Postgres db is connected to your app
+heroku pg:info				=>	displays info for the db (db URL: is under Add-on)
+heroku pg:psql				=>	connects to the db on command line, will start db CLI
+** you can now run normal psql commands inside this CLI
+\q					=>	quits the db CLI
+heroku:config				=>	will display the full db URL path
+
+***** in server.js *******
+***** this will connect us with knex.js to the database on heroku *****
+
+const knex = require('knex')({
+    client: 'pg',
+    connection: {
+      connectionString : process.env.DATABASE_URL,
+      ssl: true,
+    }
+});
+
+***********************************************************************
+
+******** DEPLOYING A FRONT END TO THIS APP *****************
+
+In heroku GUI, click create new app and follow steps
+
+* before running any of these commands be sure to be in your root/project folder for front end
+
+heroku login					=>	logins to heroku
+git remote -a (app name created on heroku)	=>	creates a heroku remote
+git add .					=>	adds files to the commit
+git remote -m "description of commit"		=>	adds description to the files being commited
+git push heroku master				=>	pushes to heroku master branch on GitHub
+heroku open					=>	opens application on browser
+
+	

@@ -1,0 +1,101 @@
+DOCKER COMMANDS
+
+docker --version			=>	grabs the version of docker
+docker info				=>	grabs more detail about your installation
+docker container --help			=>	help commands
+docker run (docker image)		=>	this will run a docker image
+docker image ls				=>	list docker containers running
+docker container ls --all		=>	list docker containers that are not running
+docker build -t	4000:80 (filename)	=>	build command - 4000:port - 80:from dockerfile
+docker image ls				=>	machine local Docker image registry
+docker run -p (filename)		=>	runs the build file
+docker container stop (containerID)	=>	ends the process
+docker tag (image) (username)/repository:(tag title)	=>	will tag your image in repo
+docker push (username)/repository:(tag title)		=>	push to repo
+docker run -p 4000:80 (username)/repository:(tag title)	=>	runs app on any machine
+docker swarm init			=>	creates a swarm manager
+docker stack deploy -c docker-compose.yml (new filename)=>	gives your app a name and runs it
+docker service ls			=>	gets the service ID for one service in application
+docker service ps (filename)_web	=>	lists the tasks for your service
+docker container ls -q			=>	lists all the containers on your system
+docker stack rm (filename)		=>	takes down the app
+docker swarm leave --force		=>	takes down the swarm
+	
+
+****** Docker will have 3 files ********************
+***	requirements.txt	=>	all dependencies that are required (ex. Flask)
+***	app.py			=>	your python file
+***	docker-compose.yml	=>	defines how container should behave in production
+****************************************************
+
+
+Dockerfile example:
+
+# Use an official Python runtime as a parent image
+FROM python:2.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+
+******************************************************
+
+docker.compose.yml example:
+
+version: "3"
+services:
+  web:
+    # replace username/repo:tag with your name and image details
+    image: username/repo:tag
+    deploy:
+      replicas: 5        <====== change this number to scale up your app *******
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "4000:80"
+    networks:
+      - webnet
+networks:
+  webnet:
+
+This docker-compose.yml file tells Docker to do the following:
+
+Pull the image we uploaded in step 2 from the registry.
+
+Run 5 instances of that image as a service called web, limiting each one to use, at most, 10% of the CPU (across all cores), and 50MB of RAM.
+
+Immediately restart containers if one fails.
+
+Map port 4000 on the host to web’s port 80.
+
+Instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
+
+Define the webnet network with the default settings (which is a load-balanced overlay network).
+
+*******************************************************
+
+
+
+
+
+
+
+	
