@@ -1,0 +1,16 @@
+REDUX COMMANDS
+
+* be inside your root/program folder
+
+npm install redux		=>	will install redux through npm
+npm install react-redux		=>	will allow react and redux to communicate
+
+npm install redux-logger	=>	will create a log for you
+
+npm install redux-thunk		=> 	middleware to return functions
+
+
+*** inside redux ***
+
+applyMiddleware			=>	method inside redux to allow middleware
+combineReducers			=>	method to combine reducers
