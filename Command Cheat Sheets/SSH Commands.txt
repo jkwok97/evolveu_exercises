@@ -1,0 +1,15 @@
+** IN BASH **
+
+	ssh {user} @ {host}		=>	connects a user(root) computer to a host computer
+
+** after connecting to server
+
+	sudo apt-get install {git}	=>	this will install dependencies
+
+	rsync -av . {user}@{host}:~/{file directory on server}	=>	will sync local directory to 									server
+	
+** generating a SSH key
+
+	ssh-keygen			=>	creates SSH keys
+	pbcopy {path_directory to key}	=>	copies PUBLIC key to server
+	ssh-add				=>	for adding a specific key to server

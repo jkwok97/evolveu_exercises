@@ -28,6 +28,7 @@ class CommunityComp extends Component {
         let age = document.getElementById('text-new-age').value;
         let dollars = document.getElementById('text-new-dollars').value;
         this.state.newCommunity.addPerson(name, age, dollars);
+        document.getElementById("show-people").innerHTML = `${this.state.newCommunity.show()}`;
     }
 
     showCommunity = () => {
@@ -35,7 +36,8 @@ class CommunityComp extends Component {
     }
 
     happyBirthday = () => {
-        document.getElementById("show-age").innerHTML = `${this.state.newCommunity.birthday()}`;
+        this.state.newCommunity.birthday();
+        document.getElementById("show-age").innerHTML = `${this.state.newCommunity.sumAge()}`;
     }
 
     calcAge = () => {
@@ -49,18 +51,18 @@ class CommunityComp extends Component {
     render() {
         return (
             <div className="community">
-                <h2>Community!</h2>
-                <div className="addCommunity">
+                <h1 className="animated rotateIn">Community!</h1>
+                <div className="addCommunity animated zoomIn">
                     <button id="new-community" onClick={this.newCommunity}>New Community</button>
                     <button id="add-node" onClick={this.addPerson}>Add Person</button><br /><br />
                     <button id="add-node" onClick={this.happyBirthday}>Happy Birthday!</button><br /><br />
-                    Name: <input type="text" id="text-new-name" />
-                    Age: <input type="text" id="text-new-age" />
+                    Name: <input type="text" id="text-new-name" /><br /><br />
+                    Age: <input type="text" id="text-new-age" /><br /><br />
                     Dollars: <input type="text" id="text-new-dollars" /><br /><br />
                     <button id="show-all" onClick={this.showCommunity}>Show All</button><br /><br />
                 </div>
                 <div className = "show-all" id="show-people"></div>
-                <div className = "calculate-age">
+                <div className = "calculate-age  animated zoomIn">
                     <button id="new-community" onClick={this.calcAge}>Calculate Total Age</button>   
                 </div>
                 <div className = "show-age" id="show-age"></div>

@@ -27,9 +27,9 @@ class LinkedList {
 
     show() {
         let y = this.x;
-        let z = `${y.subject} ${y.amount}`;
+        let z = `<p>Subject: ${y.subject} | Amount: ${y.amount}`;
         while (y.forwardNode) {
-            z += ` ${y.forwardNode.subject} ${y.forwardNode.amount}`;
+            z += `<p>Subject: ${y.forwardNode.subject} | Amount: ${y.forwardNode.amount}\n`;
             y = y.forwardNode;
         }
         return (z);
@@ -38,17 +38,17 @@ class LinkedList {
     getFirst() {
         let y = this.x;
         this.current = y;
-        let z = `${y.subject} ${y.amount}`;
+        let z = `Subject: ${y.subject} | Amount: ${y.amount}`;
         return (z);
     }
 
     getNext() {
         if (this.current.forwardNode) {
             this.current = this.current.forwardNode;
-            let y = `${this.current.subject} ${this.current.amount}`;
+            let y = `Subject: ${this.current.subject} | Amount: ${this.current.amount}`;
             return (y);
         } else {
-            return (`${this.current.subject} ${this.current.amount}: is the last node`);
+            return (`Subject: ${this.current.subject} | Amount: ${this.current.amount}: is the last node`);
         }
           
     }
@@ -56,10 +56,10 @@ class LinkedList {
     getPrev() {
         if (this.current.prevNode) {
             this.current = this.current.prevNode;
-            let y = `${this.current.subject} ${this.current.amount}`;
+            let y = `Subject: ${this.current.subject} | Amount: ${this.current.amount}`;
             return (y);
         } else {
-            return (`${this.current.subject} ${this.current.amount}: is the last node`);
+            return (`Subject: ${this.current.subject} | Amount: ${this.current.amount}: is the last node`);
         }
     }
 
@@ -67,7 +67,7 @@ class LinkedList {
         while (this.current.forwardNode) {
             this.current = this.current.forwardNode;
         }
-        let y = `${this.current.subject} ${this.current.amount}`;
+        let y = `Subject: ${this.current.subject} | Amount: ${this.current.amount}`;
             return (y);
     }
 

@@ -1,31 +1,89 @@
+body, html {
+  margin: 0 auto;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+  background-color: azure;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 5vmin;
+  height: 30vmin;
 }
 
 .lfs-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 5vmin;
   margin: 10px;
+  fill: #61DBFB;
+}
+
+h1 {
+  padding: 20px;
+  margin: 10px;
+}
+
+button {
+  display: inline-flex;
+  margin: 10px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  font-weight: 300;
+  font-size: medium;
+}
+
+button:hover,
+button:active {
+  transition: background-color 0.5s, border 0.5s, color 0.5s;
+  background-color: #61DBFB;
+  border-color: #61DBFB;
+  color: black;
 }
 
 .App-header {
+  margin-top: 10px;
   background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("./hal-gatewood-405338-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 92vh;
+  background-attachment: fixed;
+  background-color: black;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.linklist {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("./mike-alonzo-3347-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
+  background-color: black;
+  margin: 0;
+  color: white;
+}
+
+.community {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("./slava-bowman-161209-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  background-attachment: fixed;
+  background-color: black;
+  color: white;
 }
 
 @keyframes App-logo-spin {

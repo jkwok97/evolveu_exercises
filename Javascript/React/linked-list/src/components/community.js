@@ -31,7 +31,7 @@ class Community {
         let i;
         let people = ``;
         for (i=0; i < this.peopleArray.length; i++) {
-            people += `Name: ${this.peopleArray[i].name}, Age: ${this.peopleArray[i].age}, Dollars: ${this.peopleArray[i].dollars} | `
+            people += `<p>Name: ${this.peopleArray[i].name} | Age: ${this.peopleArray[i].age} | Dollars: ${this.peopleArray[i].dollars}`
         }
         return (people);
         

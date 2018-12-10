@@ -9,7 +9,7 @@ class LinkedListComp extends Component {
         super()
         this.counter = 0;
         this.state = {
-          newNode: null,
+          newNode: null
         }
       }
 
@@ -18,13 +18,13 @@ class LinkedListComp extends Component {
         let amount = document.getElementById('text-new-amount').value;
         let newNode = new jk.LinkedList(subject, amount);
         this.setState({ newNode: newNode });
-        
     }
 
     addNode = () => {
         let subject = document.getElementById('text-new-subject').value;
         let amount = document.getElementById('text-new-amount').value;
         this.state.newNode.add(subject, amount);
+        document.getElementById("all").innerHTML = `${this.state.newNode.show()}`;
     }
 
     showLinkList = () => {
@@ -50,11 +50,14 @@ class LinkedListComp extends Component {
     insertNode = () => {
         let subject = document.getElementById('text-new-subject').value;
         let amount = document.getElementById('text-new-amount').value;
-        document.getElementById("all").innerHTML = `${this.state.newNode.insertNode(subject, amount)}`;
+        // document.getElementById("all").innerHTML = `${this.state.newNode.insertNode(subject, amount)}`;
+        this.state.newNode.insertNode(subject, amount);
+        document.getElementById("all").innerHTML = `${this.state.newNode.show()}`;
     }
 
     deleteNode = () => {
         this.state.newNode.deleteNode();
+        document.getElementById("all").innerHTML = `${this.state.newNode.show()}`;
     }
 
     onPassedFunction = () => {
@@ -64,20 +67,19 @@ class LinkedListComp extends Component {
     render() {
         return (
             <div className="linklist">
-                <h2>Linked Lists!</h2>
-                <div className="addlinklist">
+                <h1 className="animated rotateIn">Linked Lists!</h1>
+                <div className="addlinklist animated zoomIn">
                     <button id="new-linklist" onClick={this.newLinkList}>New Linked List</button>
                     <button id="add-node" onClick={this.addNode}>Add Node</button>
                     <button id="insert-node" onClick={this.insertNode}>Insert Node</button>
                     <button id="delete-node" onClick={this.deleteNode}>Delete Node</button><br /><br />
-                    Subject: <input type="text" id="text-new-subject" />
+                    Subject: <input type="text" id="text-new-subject" /><br /><br />
                     Amount: <input type="text" id="text-new-amount" /><br /><br />
                     <button id="show-all" onClick={this.showLinkList}>Show All</button><br /><br />
                     <button id="show-first" onClick={this.showFirst}>First</button>
                     <button id="show-next" onClick={this.showNext}>Next</button>
                     <button id="show-prev" onClick={this.showPrev}>Prev</button>
                     <button id="show-last" onClick={this.showLast}>Last</button>
-
                 </div>
                 <div className = "show-all" id="all"></div>
             </div>

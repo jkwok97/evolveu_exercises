@@ -1,0 +1,6 @@
+bcrypt-nodejs		=>	for hashing passwords
+fast-css		=>	for reading css files
+Handlebars - express	=>	for templating
+Jest			=>	for testing JS code
+rsync			=>	for syncing to remote SSH server		
+
