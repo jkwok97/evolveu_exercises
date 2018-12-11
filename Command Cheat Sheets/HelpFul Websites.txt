@@ -1,0 +1,2 @@
+Jpeg optimizer		=>	helps optimize jpeg images
+tinyPNG			=>	helps optimize png files
