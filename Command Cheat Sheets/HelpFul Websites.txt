@@ -1,2 +1,18 @@
-Jpeg optimizer		=>	helps optimize jpeg images
-tinyPNG			=>	helps optimize png files
+******	OPTIMIZING IMAGES
+
+Jpeg optimizer		=> helps optimize jpeg images
+tinyPNG			=> helps optimize png files
+www.verexif.com		=> removes metadata on images/photos
+
+****** TESTING SPEED OF WEBSITES
+
+Pagespeed Insights
+WebPageTest
+
+****** OPTIMIZING JAVASCRIPT
+
+You might not need Jquery 	=> website that shows jquery commands in native JS
+
+****** HTTP/2
+
+https://developers.google.com/web/fundamentals/performance/http2/

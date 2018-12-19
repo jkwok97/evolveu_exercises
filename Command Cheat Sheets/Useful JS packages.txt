@@ -3,4 +3,5 @@ fast-css		=>	for reading css files
 Handlebars - express	=>	for templating
 Jest			=>	for testing JS code
 rsync			=>	for syncing to remote SSH server		
-
+knex			=>	for connecting to databases
+pg			=>	for connecting to Postgres database

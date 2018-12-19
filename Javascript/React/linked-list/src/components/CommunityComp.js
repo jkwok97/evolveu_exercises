@@ -37,7 +37,8 @@ class CommunityComp extends Component {
 
     happyBirthday = () => {
         this.state.newCommunity.birthday();
-        document.getElementById("show-age").innerHTML = `${this.state.newCommunity.sumAge()}`;
+        document.getElementById("show-age").innerHTML = `${this.state.newCommunity.sumAge()}`
+        document.getElementById("show-people").innerHTML = `${this.state.newCommunity.show()}`;
     }
 
     calcAge = () => {

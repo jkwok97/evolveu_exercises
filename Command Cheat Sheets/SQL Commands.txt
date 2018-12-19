@@ -1,0 +1,26 @@
+SQL COMMANDS - POSTGRES
+
+******* CREATE A TABLE *********
+
+CREATE TABLE users (
+    id serial PRIMARY key,
+    name varchar(100),
+    email text UNIQUE NOT NULL,
+    entries BIGINT DEFAULT 0,
+    joined TIMESTAMP NOT NULL
+);
+
+******* INSERT INTO ********
+
+INSERT INTO champions (year_won, team_name, owner)
+VALUES (2018, 'Staten Island Killer Bees', 'Jeff Kwok');
+
+******* RENAME A COLUMN NAME *************
+
+ALTER TABLE champions RENAME name TO owner;
+
+******* DELETING A ROW *******************
+
+DELETE FROM champions
+WHERE id = 23;
+

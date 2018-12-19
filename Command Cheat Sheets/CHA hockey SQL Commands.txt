@@ -1,0 +1,17 @@
+SQL Postgres Commands
+
+CREATE TABLE drafts (
+    id serial PRIMARY key,
+    draft_year SMALLINT NOT null,
+    round SMALLINT NOT null,
+    number SMALLINT NOT null,
+    team text NOT NULL, 
+    player_name text NOT NULL,
+    player_pos text NOT NULL
+);
+
+INSERT INTO drafts
+(draft_year, round, number, team, player_name, player_pos)
+VALUES
+(2018, 1, 1, 'Peoria Prowlers', 'Matt Barzal', 'Center');
+
