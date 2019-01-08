@@ -1,0 +1,21 @@
+*** TESTING LIBRARIES ***
+
+Jasmine - popular but doesn't have code coverage
+Jest - code coverage "npm test -- --coverage"
+	- comes with create react app
+	- google jest cheat sheet
+Mocha
+Chai - Assertion Library for Mocha
+Sinon.js
+istanbul - code coverage, works underneath jest and most testing libraries
+Karma.js - allows to run tests in the browser
+Puppeteer
+Jsdom - runs a Dom like environment to run tests
+
+*** React testing ***
+Snapshot
+Enzyme
+
+*** automation testing ***
+Web Driver io
+Test cafe
