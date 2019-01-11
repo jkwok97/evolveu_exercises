@@ -1,0 +1,106 @@
+*** TYPESCRIPT ***
+
+* filetype will only be in development never production
+* compiles to JS file
+* checks for type errors on variables
+* great for writing logic functions
+
+tsc "filename" 		->	compiles the file into a .js file
+tsc --init		-> 	creates a typescript compiler config file
+tsc "filename" --watch	->	continual compiling of file into a .js file
+
+**** TYPES ******
+
+//BOOLEAN
+
+let isCool: boolean = true;
+
+//NUMBER
+
+let age: number = 56;
+
+//STRING
+
+let eyeColor: string = 'brown';
+let favoriteQuote: string = `I'm not old, I'm only ${age}!`
+
+//ARRAY
+
+let pets: string[] = ['cat', 'dog', 'pig'];
+let pets2: Array<string> = ['cat', 'dog', 'pig'];
+
+//OBJECTS
+
+let wizard: object = {
+    a: 'John'
+}
+
+//NULL AND UNDEFINED
+
+let meh: undefined = undefined;
+let nooo: null = null;
+
+//TUPLE
+
+let basket: [string, number];
+basket = ['basketball', 5];
+
+//ENUMERABLE
+
+enum Size { Small = 1, Medium = 2, Large = 3}
+let sizeName: string = Size[2];
+
+//ANY
+
+let whatever: any = 'aaaaaaaaaaaa noooooooo'
+whatever = 10;
+
+//VOID
+
+let sing = (): void => {
+    console.log('boooooo');
+    // return 'booooooo' => this would throw error
+}
+
+//NEVER
+//never checks to make sure nothing is returned and unreachable code
+
+let error = (): never => {
+    throw Error('ooops');
+}
+
+//TYPE ASSERTION
+interface CatArmy {
+    count: number,
+    type: string,
+    magic: string
+}
+
+let dog = {} as CatArmy
+dog.count
+
+//FUNCTION
+
+let fightRobotArmy3 = (robots: RobotArmy):void => {
+    console.log('Fight');
+}
+
+//CLASS
+
+class Animal {
+    sing: string = 'lalalala'
+    constructor(sound: string) {
+        this.sing = sound;
+    }
+    greet() {
+        return `Hello ${this.sing}`
+    }
+}
+let lion = new Animal('Raaaaaawwr')
+lion.greet();
+
+//UNION
+
+let confused: string | number = "hello"
+let confused2: string | number = 5
+

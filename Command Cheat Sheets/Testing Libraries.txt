@@ -19,3 +19,6 @@ Enzyme
 *** automation testing ***
 Web Driver io
 Test cafe
+
+** check code coverage **
+npm test -- --coverage
