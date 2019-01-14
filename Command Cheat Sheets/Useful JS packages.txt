@@ -5,3 +5,8 @@ Jest			=>	for testing JS code
 rsync			=>	for syncing to remote SSH server		
 knex			=>	for connecting to databases
 pg			=>	for connecting to Postgres database
+React			=>	for building client side single page applications
+Next			=>	for building server side rendered multi page applications using React as the backbone
+	isomorphic-unfetch	=>	used with Next for doing fetch calls
+	now			=>	deploying a next app
+

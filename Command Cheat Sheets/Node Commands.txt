@@ -1,0 +1,6 @@
+npm init -y				=>	creates a package.json file
+npm install "package name"		=>	will install node package into application, will show in package.json file under dependencies
+npm install "package name" --save-dev	=>	will install node package into application, will show in package.json file under dependencies
+npm install "package name" -g		=>	will install node package globally
+
+
