@@ -1,0 +1,40 @@
+***** 3RD PARTY LIBRARIES ******
+
+npm install -g nsp	=>	installs nsp package
+nsp check		=>	in directory of application, will check for vulnerabilities
+			=>	audits package.json
+
+npm install -g snyk	=>	installs snyk package
+snyk test		=>	audits node modules directory
+			=>	in directory of application, will check for vulnerabilities
+snyk auth		=>	authorizes user through GitHub account
+
+**** LOGGING ********
+
+npm install morgan	=>	installs package morgan
+			=>	must be "required" in your code/file
+			=>	used as middle ware ex.(app.use(morgan('tiny'))
+			=>	(app.use(morgan('combined'))
+
+npm install Winston	=>	installs package winston
+			=>	must be "required" in your code/file
+			=>	consider this a fancier console.log
+		
+
+***** HTTPS *******
+
+Let's encrypt		=>	website
+Cloud flare		=>	website
+
+***** SECURE HEADERS *******
+
+npm install helmet	=>	installs helmet package
+			=>	must be "required in your code/file
+			=>	used as middle ware ex.(app.use(helmet())
+
+***** ENCRYPTION ******
+
+bcrypt			=>	hashing passwords
+scrypt			=>	hashing passwords
+Aragon2			=>	hashing passwords
+pgcrypto		=>	encrypt a few columns in postgres
