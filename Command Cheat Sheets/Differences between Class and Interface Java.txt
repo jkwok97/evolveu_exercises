@@ -1,0 +1,29 @@
+Class
+	- MUST BE IMPLEMENTED
+	- can be instantiated
+	- inherits methods from abstract classed
+	- implements all methods
+	- abstract methods inherited from abstract classes are fully defined and implemented
+
+
+Abstract class
+	- CANT BE IMPLEMENTED
+	- can't be instantiated
+	- can have methods containing code
+	- contains abstract methods that are not fully defined and not implemented
+
+Interface
+	- A CONTRACT OR A PROMISE
+	- denies methods that need to be implemented
+	- can't be instantiated
+	- can't have functional code within methods defined
+	- defines but does not implement methods that must be fulfilled by the concrete class
+
+
+
+**************
+Hard working
+Why tech interests me
+Soft skills
+Communication
+Quick learner
