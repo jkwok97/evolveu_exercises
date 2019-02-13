@@ -3,9 +3,11 @@ import logo from './logo.svg';
 import home from './_ionicons_svg_ios-bed.svg'
 import link from './_ionicons_svg_md-link.svg';
 import people from './_ionicons_svg_md-contacts.svg';
+import taxes from './_ionicons_svg_ios-calculator.svg';
 import './App.css';
 import LinkedListComp from './components/LinkedListComp';
 import CommunityComp from './components/CommunityComp';
+import TaxesComp from './components/TaxesComp';
 
 class App extends Component {
   constructor() {
@@ -16,7 +18,6 @@ class App extends Component {
   }
 
   onIcon = (e) => {
-    console.log(e.currentTarget.name);
     this.setState({
       compToShow: e.currentTarget.name,
     })
@@ -32,6 +33,9 @@ class App extends Component {
     } else if (this.state.compToShow === 'community') {
       toShow = 
         <CommunityComp name="Top" func={this.onPassedFunction}/>
+    } else if (this.state.compToShow === 'taxes') {
+      toShow = 
+        <TaxesComp className="taxescomp" name="Top" func={this.onPassedFunction} />
     } else {
       toShow = 
         <div>
@@ -50,6 +54,7 @@ class App extends Component {
         <img src={home} className="lfs-logo" name="home" onClick={this.onIcon} alt="logo" />
         <img src={link} className="lfs-logo"  name="linked-list" onClick={this.onIcon} alt="logo" />
         <img src={people} className="lfs-logo"  name="community" onClick={this.onIcon} alt="logo" />
+        <img src={taxes} className="lfs-logo" name="taxes" onClick={this.onIcon} alt="logo" />
         <div> {toShow} </div>
       </div>
     );
