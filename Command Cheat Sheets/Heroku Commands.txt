@@ -22,6 +22,7 @@ re-run git remote -v to make sure Heroku app matches the created app
 **************************************************************************************************
 
 git push heroku master			=>	deploys app to heroku (will create a build env)
+git subtree push --prefix output heroku master	=> deploys sub folder of a repo
 heroku open				=>	this will open the app on browser
 heroku logs --tail			=>	give us a log of what's going on in heroku server
 
