@@ -231,4 +231,4 @@ package-lock.json
 RNTester/build
 
 # React-Native Advanced
-/functions/service_account.json
+**/functions/service_account.json
