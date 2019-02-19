@@ -234,3 +234,4 @@ RNTester/build
 **/functions/service_account.json
 **/functions/service.js
 **/firebase-auth/setup.js
+**/jobs/setup/
