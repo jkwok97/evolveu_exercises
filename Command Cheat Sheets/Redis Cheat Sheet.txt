@@ -1,0 +1,53 @@
+** Installing Redis
+
+1.Brew install redis
+
+** start redis
+
+2. Brew services start redis
+
+** running the server
+
+3. Redis-server
+4. redis-cli
+
+Without using the /src directory prefix
+
+** to test connection
+
+5. Redis-cli ping
+
+** Redis Datatypes
+=> Strings
+=> Hashes (like JS Objects)	=> HMSET	=> ex. HMSET user id 45 name "Johnny"
+				=> HGET		=> ex. HGET user id	=> outputs 45
+				=> HGETALL	=> will get all
+=> Lists (like linked lists)	=> LPUSH	=> ex. LPUSH ourlist 10
+						=> will add to the list left of the head
+				=> RPUSH	=> ex. RPUSH ourlist "hello"
+						=> will add to the list right of the head
+				=> LRANGE	=> ex. LRANGE ourlist 0 1
+						=> will output "10" & "Hello"
+				=> RPOP/LPOP	=> will delete from right or left
+=> Sets (unordered sets of strings)(can't have duplicates)
+				=> SADD		=> ex. SADD ourset 1 2 3 4 5
+				=> SMEMBERS	=> ex. SMEMBERS ourset
+						=> should output 1 2 3 4 5
+				=> SISMEMBER	=> ex. SISMEMBER ourset 5
+						=> should output 1
+=> Sorted Sets (ordered sets of strings) (can't have duplicates)
+				=> ZADD		=> ex. ZADD team 50 "wizards"
+						=> ex. ZADD team 40 "cavaliers"
+						=> ex. ZADD team 1 "bolts"
+				=> ZRANGE 	=> ex. ZRANGE 0 2
+						=> should output "bolts" "cavaliers" "wizards"					=> ZRANK	=> ex. ZRANK team "wizards"
+						=> should output 2
+
+** Redis commands
+
+=> Set key "value"
+=> Get key 	=> should output the value
+=> Exists key	=> should output a number 1 if it exists
+=> Del key	=> should delete that key
+=> Mset key "value"	=> allows multiple sets
+=> Mget key key		=> should output the values of that keys

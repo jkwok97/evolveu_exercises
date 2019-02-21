@@ -1,0 +1,15 @@
+These are the steps to deploy the front-end to heroku
+
+
+1. Make sure you are in the root folder cultivate/Marketplace
+
+2. Make connection to local repository to heroku app
+
+	Run $ heroku git:remote -a cultivatr-app
+
+3. Run $ git add .
+
+4. Run $ git commit -am"{your commit message}
+
+5. Run $ git subtree push --prefix front-end-admin-producer heroku master
+

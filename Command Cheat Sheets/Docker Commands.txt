@@ -90,6 +90,16 @@ Instruct web’s containers to share port 80 via a load-balanced network called 
 
 Define the webnet network with the default settings (which is a load-balanced overlay network).
 
+Docker-compose build {filename}		=>	builds the .yml file
+Docker-compose run {filename}		=>	will run the .yml file
+docker-compose up --build		=>	will build and run .yml file
+Docker-compose down			=>	will release any builds created
+
+*****
+docker-compose run command will override any ports set in .yml file
+Use docker-compose up --build to get passed this
+*****
+
 *******************************************************
 
 
