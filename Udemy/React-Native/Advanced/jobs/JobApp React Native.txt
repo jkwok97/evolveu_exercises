@@ -1,0 +1,16 @@
+
+
+** try adding a pagination indicator on welcome screen
+
+4201738803816157
+
+Array [
+  Object {
+    "city": "Santa Cruz",
+    "country": "USA",
+    "isoCountryCode": "US",
+    "name": "1840a",
+    "postalCode": "95062",
+    "region": "California",
+    "street": "17th Avenue",
+  },
