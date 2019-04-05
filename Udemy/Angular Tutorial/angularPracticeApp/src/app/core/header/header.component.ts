@@ -1,8 +1,8 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
 import { Response } from '@angular/http';
 
-import { DataStorageService } from '../shared/data-storage.services';
-import { AuthService } from '../auth/auth.service';
+import { DataStorageService } from '../../shared/data-storage.services';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-header',
@@ -13,11 +13,6 @@ export class HeaderComponent {
         private dataStorageService: DataStorageService,
         private authService: AuthService
         ){}
-    // @Output() featureSelected: EventEmitter<string> = new EventEmitter<string>();
-
-    // onSelect(feature: string) {
-    //     this.featureSelected.emit(feature);
-    // }
 
     onSaveData() {
         this.dataStorageService.storeRecipes().subscribe(
@@ -25,6 +20,10 @@ export class HeaderComponent {
                 console.log(response);
             }
         );
+    }
+
+    isAuthenticated() {
+        return this.authService.isAuthenticated();
     }
 
     onLogout() {
