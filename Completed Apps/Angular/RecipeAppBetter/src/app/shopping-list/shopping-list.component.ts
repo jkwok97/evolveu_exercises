@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { Ingredient } from '../shared/ingredient.model'
-import { ShoppingListService } from './shopping-list.service';
+// import { ShoppingListService } from './shopping-list.service';
+import * as fromShoppingList from './store/shopping-list.reducers';
+import * as ShoppingListActions from './store/shopping-list.actions';
+
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,25 +14,33 @@ import { ShoppingListService } from './shopping-list.service';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[];
-  private subscription: Subscription;
+  shoppingListState: Observable<{ingredients: Ingredient[]}>;
+  // REPLACED BY NGRX THROUGH STORE
+  // private subscription: Subscription;
 
-  constructor(private slService: ShoppingListService) { }
+  constructor(
+    // private slService: ShoppingListService,
+    private store: Store<fromShoppingList.AppState>
+    ) { }
 
   ngOnInit() {
-    this.ingredients = this.slService.getIngredients();
-    this.subscription = this.slService.ingredientsChanged.subscribe(
-      (ingredients: Ingredient[]) => {
-        this.ingredients = ingredients;
-      }
-    );
+    this.shoppingListState = this.store.select('shoppingList');
+    // REPLACED BY NGRX THROUGH STORE
+    // this.subscription = this.slService.ingredientsChanged.subscribe(
+    //   (ingredients: Ingredient[]) => {
+    //     this.ingredients = ingredients;
+    //   }
+    // );
   }
 
   onEditItem(index: number) {
-    this.slService.startedEditing.next(index);
+    this.store.dispatch(new ShoppingListActions.StartEdit(index));
+    // REPLACED BY NGRX THROUGH STORE
+    // this.slService.startedEditing.next(index);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // REPLACED BY NGRX THROUGH STORE
+    // this.subscription.unsubscribe();
   }
 }
