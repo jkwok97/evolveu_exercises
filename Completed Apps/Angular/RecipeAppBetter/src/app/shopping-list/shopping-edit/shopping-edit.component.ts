@@ -4,9 +4,8 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { Ingredient } from 'src/app/shared/ingredient.model';
-// import { ShoppingListService } from '../shopping-list.service';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromShoppingList from '../store/shopping-list.reducers';
+import * as fromApp from '../../store/app.reducers';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -17,12 +16,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   @ViewChild('f') slForm: NgForm;
   subscription: Subscription;
   editMode = false;
-  // editItemIndex: number;
   editedItem: Ingredient;
 
   constructor(
-    // private slService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>
+    private store: Store<fromApp.AppState>
     ) { }
 
   ngOnInit() {
@@ -40,19 +37,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         }
       }
     );
-
-    // REPLACED BY NGRX THROUGH STORE
-    // this.subscription = this.slService.startedEditing.subscribe(
-    //   (index: number) => {
-    //     this.editItemIndex = index;
-    //     this.editMode = true;
-    //     this.editedItem = this.slService.getIngredient(index);
-    //     this.slForm.setValue({
-    //       name: this.editedItem.name,
-    //       amount: this.editedItem.amount
-    //     })
-    //   }
-    // )
   }
 
   onSubmit(form: NgForm) {
@@ -60,8 +44,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     const newIngredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
       this.store.dispatch(new ShoppingListActions.UpdateIngredient({ingredient: newIngredient}));
-      // REPLACED BY NGRX THROUGH STORE
-      // this.slService.updateIngredient(this.editItemIndex, newIngredient);
     } else {
       this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient))
     }
@@ -76,8 +58,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   onDelete() {
     this.store.dispatch(new ShoppingListActions.DeleteIngredient());
-    // REPLACED BY NGRX THROUGH STORE
-    // this.slService.deleteIngredient(this.editItemIndex);
     this.onClear();
   }
 
