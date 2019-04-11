@@ -237,4 +237,4 @@ RNTester/build
 **/jobs/setup/
 
 #Configuration Files
-**/src/backend/app/config.js
+**/src/backend/config.js
