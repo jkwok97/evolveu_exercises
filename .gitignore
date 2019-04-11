@@ -237,4 +237,4 @@ RNTester/build
 **/jobs/setup/
 
 #Configuration Files
-**/src/backend/config.js
+**/MeanApp/src/backend/config.js
