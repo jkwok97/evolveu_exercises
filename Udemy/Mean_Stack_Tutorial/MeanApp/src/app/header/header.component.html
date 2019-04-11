@@ -1,1 +1,16 @@
-<mat-toolbar color="primary">Kwok Message Board</mat-toolbar>
+<mat-toolbar color="primary">
+    <span>
+        <a routerLink="/">Kwok Message Board</a>
+    </span>
+    <span class="spacer"></span>
+    <ul>
+        <li>
+            <a 
+                mat-raised-button
+                color="primary" 
+                routerLink="/create"
+                routerLinkActive="mat-accent"
+            >Create Post</a>
+        </li>
+    </ul>
+</mat-toolbar>
