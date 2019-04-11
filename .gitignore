@@ -235,3 +235,6 @@ RNTester/build
 **/functions/service.js
 **/firebase-auth/setup.js
 **/jobs/setup/
+
+#Configuration Files
+**/src/backend/app/config.js
