@@ -24,10 +24,12 @@ export class PostCreateComponent implements OnInit {
       return;
     }
     const post: Post = {
+      id: '',
       title: form.value.title,
       description: form.value.description,
       content: form.value.content
     }
+
     this.postService.addPost(post);
     form.resetForm();
   }
