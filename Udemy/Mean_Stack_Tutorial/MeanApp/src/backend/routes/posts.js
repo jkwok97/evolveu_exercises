@@ -1,78 +1,110 @@
-const express = require('express');
-const Post = require('../models/post');
+const express = require("express");
+const multer = require("multer");
+
+const Post = require("../models/post");
 
 const router = express.Router();
 
+const MIME_TYPE_MAP = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg"
+};
 
-router.post('', (req, res, next) => {
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error("Invalid mime type");
+    if (isValid) {
+      error = null;
+    }
+    cb(error, "/Users/jeffkwok/Desktop/EvolveU/Repositories/evolveu_exercises/Udemy/Mean_Stack_Tutorial/MeanApp/src/backend/images");
+  },
+  filename: (req, file, cb) => {
+    const name = file.originalname
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name + "-" + Date.now() + "." + ext);
+  }
+});
+
+router.post(
+  "",
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    const url = req.protocol + "://" + req.get("host");
+    console.log(url + "/images/" + req.file.filename);
+    console.log(url);
     const post = new Post({
-        title: req.body.title,
-        description: req.body.description,
-        content: req.body.content
+      title: req.body.title,
+      description: req.body.description,
+      content: req.body.content,
+      imagePath: url + "/images/" + req.file.filename
     });
+    console.log(post);
     post.save().then(createdPost => {
-        console.log(createdPost);
-        res.status(201).json({
-            message: "Post was successful",
-            postId: createdPost._id
-        });
-    });  
-});
+      res.status(201).json({
+        message: "Post added successfully",
+        post: {
+          ...createdPost,
+          id: createdPost._id
+        }
+      });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+);
 
-router.get('', (req, res, next) => {
-    // const posts = [
-    //     {id: "1", title: "First Post", description: "First Description", content: "First post from the server"},
-    //     {id: "2", title: "Second Post", description: "Second Description", content: "Second post from the server"},
-    //     {id: "3", title: "Third Post", description: "Third Description", content: "Third post from the server"}
-    // ];
-    Post.find()
-        .then(documents => {
-            console.log(documents);
-            res.status(200).json({
-                message: 'Posts fetched successfully',
-                posts: documents
-            });
-        });
-});
-
-router.get('/:id', (req, res, next) => {
-    Post.findById(req.params.id)
-        .then((post) => {
-            if (post) {
-                res.status(200).json(post);
-            } else {
-                res.status(404).json({ 
-                    message: "Post Not Found"
-                });
-            }
-        });
-});
-
-router.put("/:id", (req, res, next) => {
+router.put(
+  "/:id",
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    let imagePath = req.body.imagePath;
+    if (req.file) {
+      const url = req.protocol + "://" + req.get("host");
+      imagePath = url + "/images/" + req.file.filename
+    }
     const post = new Post({
-        _id: req.body.id,
-        title: req.body.title,
-        description: req.body.description,
-        content: req.body.content
-    })
-    Post.updateOne({ _id: req.params.id }, post)
-        .then(result => {
-            console.log(result);
-            res.status(200).json({ message: "Update Successful" });
-        })
-        .catch(error => {console.log(error)});
+      _id: req.body.id,
+      title: req.body.title,
+      description: req.body.description,
+      content: req.body.content,
+      imagePath: imagePath
+    });
+    console.log(post);
+    Post.updateOne({ _id: req.params.id }, post).then(result => {
+      res.status(200).json({ message: "Update successful!" });
+    });
+  }
+);
+
+router.get("", (req, res, next) => {
+  Post.find().then(documents => {
+    res.status(200).json({
+      message: "Posts fetched successfully!",
+      posts: documents
+    });
+  });
 });
 
-router.delete("/:id", (req,res,next) => {
-    console.log(req.params.id);
-    Post.deleteOne({
-        _id: req.params.id
-    }).then((result) => {
-        console.log(result);
-    });
-    res.status(200).json({
-        message: 'Post deleted successfully'
-    });
+router.get("/:id", (req, res, next) => {
+  Post.findById(req.params.id).then(post => {
+    if (post) {
+      res.status(200).json(post);
+    } else {
+      res.status(404).json({ message: "Post not found!" });
+    }
+  });
+});
+
+router.delete("/:id", (req, res, next) => {
+  Post.deleteOne({ _id: req.params.id }).then(result => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted!" });
+  });
 });
 
 module.exports = router;
